@@ -1,0 +1,8 @@
+{
+  "phpunit.command": "./vendor/bin/sail bash -c",
+  "phpunit.phpunit": "vendor/bin/pest",
+  "phpunit.php": "php",
+  "phpunit.paths": {
+    "${workspaceFolder}": "/var/www/html"
+  }
+}
