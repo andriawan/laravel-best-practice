@@ -1,0 +1,560 @@
+{
+    "commands": {
+        "docker compose up": {
+            "description": "running laravel app",
+            "command": "docker compose up -d"
+        },
+        "docker compose down": {
+            "description": "stop laravel app",
+            "command": "docker compose down"
+        },
+        "docker compose logs": {
+            "description": "docker compose logs",
+            "command": "docker compose logs"
+        },
+        "make controller": {
+            "description": "make controller",
+            "command": "docker compose run --rm laravel.test php artisan make:controller"
+        },
+        "pint format": {
+            "description": "pint format",
+            "command": "docker compose run --rm laravel.test ./vendor/bin/pint --parallel"
+        },
+        "pint check": {
+            "description": "pint format",
+            "command": "docker compose run --rm laravel.test ./vendor/bin/pint --test"
+        },
+        "migrate": {
+            "description": "migrate",
+            "command": "docker compose run --rm laravel.test php artisan migrate"
+        },
+        "db console": {
+            "description": "db console",
+            "command": "docker compose run --rm laravel.test php artisan db"
+        },
+        "test": {
+            "description": "test",
+            "command": "docker compose run --rm laravel.test php artisan test"
+        },
+        "git fetch": {
+            "description": "git fetch",
+            "command": "git fetch --all --prune"
+        },
+        "git push -f origin HEAD": {
+            "description": "git push -f origin HEAD",
+            "command": "git push -f origin HEAD"
+        },
+        "git amend no edit": {
+            "description": "git amend no edit",
+            "command": "git commit --amend --no-edit"
+        },
+        "git amend reset author": {
+            "description": "git amend no edit",
+            "command": "git commit --amend --no-edit --reset-author"
+        },
+        "sync command vscode": {
+            "description": "sync command vscode",
+            "command": "cp commander.json .vscode/"
+        },
+        "composer install": {
+            "description": "composer install",
+            "command": "docker compose run --rm laravel.test composer install"
+        },
+        "run coverage": {
+            "description": "run coverage",
+            "command": "docker compose run --rm laravel.test php -dxdebug.mode=coverage ./vendor/bin/phpunit --coverage-html storage/app/public/coverage --coverage-clover=storage/app/public/coverage/coverage.xml"
+        },
+        "artisan about": {
+            "description": "Display basic information about your application",
+            "command": "docker compose run --rm laravel.test php artisan about"
+        },
+        "artisan clear-compiled": {
+            "description": "Remove the compiled class file",
+            "command": "docker compose run --rm laravel.test php artisan clear-compiled"
+        },
+        "artisan completion": {
+            "description": "Dump the shell completion script",
+            "command": "docker compose run --rm laravel.test php artisan completion"
+        },
+        "artisan db": {
+            "description": "Start a new database CLI session",
+            "command": "docker compose run --rm laravel.test php artisan db"
+        },
+        "artisan docs": {
+            "description": "Access the Laravel documentation",
+            "command": "docker compose run --rm laravel.test php artisan docs"
+        },
+        "artisan down": {
+            "description": "Put the application into maintenance / demo mode",
+            "command": "docker compose run --rm laravel.test php artisan down"
+        },
+        "artisan env": {
+            "description": "Display the current framework environment",
+            "command": "docker compose run --rm laravel.test php artisan env"
+        },
+        "artisan help": {
+            "description": "Display help for a command",
+            "command": "docker compose run --rm laravel.test php artisan help"
+        },
+        "artisan inspire": {
+            "description": "Display an inspiring quote",
+            "command": "docker compose run --rm laravel.test php artisan inspire"
+        },
+        "artisan list": {
+            "description": "List commands",
+            "command": "docker compose run --rm laravel.test php artisan list"
+        },
+        "artisan migrate": {
+            "description": "Run the database migrations",
+            "command": "docker compose run --rm laravel.test php artisan migrate"
+        },
+        "artisan optimize": {
+            "description": "Cache framework bootstrap, configuration, and metadata to increase performance",
+            "command": "docker compose run --rm laravel.test php artisan optimize"
+        },
+        "artisan pail": {
+            "description": "Tails the application logs.",
+            "command": "docker compose run --rm laravel.test php artisan pail"
+        },
+        "artisan serve": {
+            "description": "Serve the application on the PHP development server",
+            "command": "docker compose run --rm laravel.test php artisan serve"
+        },
+        "artisan test": {
+            "description": "Run the application tests",
+            "command": "docker compose run --rm laravel.test php artisan test"
+        },
+        "artisan test with coverage": {
+            "description": "Run the application tests with coverage",
+            "command": "docker compose run --rm laravel.test php artisan test --coverage"
+        },
+        "artisan tinker": {
+            "description": "Interact with your application",
+            "command": "docker compose run --rm laravel.test php artisan tinker"
+        },
+        "artisan up": {
+            "description": "Bring the application out of maintenance mode",
+            "command": "docker compose run --rm laravel.test php artisan up"
+        },
+        "artisan auth:clear-resets": {
+            "description": "Flush expired password reset tokens",
+            "command": "docker compose run --rm laravel.test php artisan auth:clear-resets"
+        },
+        "artisan cache:clear": {
+            "description": "Flush the application cache",
+            "command": "docker compose run --rm laravel.test php artisan cache:clear"
+        },
+        "artisan cache:forget": {
+            "description": "Remove an item from the cache",
+            "command": "docker compose run --rm laravel.test php artisan cache:forget"
+        },
+        "artisan cache:prune-stale-tags": {
+            "description": "Prune stale cache tags from the cache (Redis only)",
+            "command": "docker compose run --rm laravel.test php artisan cache:prune-stale-tags"
+        },
+        "artisan channel:list": {
+            "description": "List all registered private broadcast channels",
+            "command": "docker compose run --rm laravel.test php artisan channel:list"
+        },
+        "artisan config:cache": {
+            "description": "Create a cache file for faster configuration loading",
+            "command": "docker compose run --rm laravel.test php artisan config:cache"
+        },
+        "artisan config:clear": {
+            "description": "Remove the configuration cache file",
+            "command": "docker compose run --rm laravel.test php artisan config:clear"
+        },
+        "artisan config:publish": {
+            "description": "Publish configuration files to your application",
+            "command": "docker compose run --rm laravel.test php artisan config:publish"
+        },
+        "artisan config:show": {
+            "description": "Display all of the values for a given configuration file or key",
+            "command": "docker compose run --rm laravel.test php artisan config:show"
+        },
+        "artisan db:monitor": {
+            "description": "Monitor the number of connections on the specified database",
+            "command": "docker compose run --rm laravel.test php artisan db:monitor"
+        },
+        "artisan db:seed": {
+            "description": "Seed the database with records",
+            "command": "docker compose run --rm laravel.test php artisan db:seed"
+        },
+        "artisan db:show": {
+            "description": "Display information about the given database",
+            "command": "docker compose run --rm laravel.test php artisan db:show"
+        },
+        "artisan db:table": {
+            "description": "Display information about the given database table",
+            "command": "docker compose run --rm laravel.test php artisan db:table"
+        },
+        "artisan db:wipe": {
+            "description": "Drop all tables, views, and types",
+            "command": "docker compose run --rm laravel.test php artisan db:wipe"
+        },
+        "artisan env:decrypt": {
+            "description": "Decrypt an environment file",
+            "command": "docker compose run --rm laravel.test php artisan env:decrypt"
+        },
+        "artisan env:encrypt": {
+            "description": "Encrypt an environment file",
+            "command": "docker compose run --rm laravel.test php artisan env:encrypt"
+        },
+        "artisan event:cache": {
+            "description": "Discover and cache the application's events and listeners",
+            "command": "docker compose run --rm laravel.test php artisan event:cache"
+        },
+        "artisan event:clear": {
+            "description": "Clear all cached events and listeners",
+            "command": "docker compose run --rm laravel.test php artisan event:clear"
+        },
+        "artisan event:list": {
+            "description": "List the application's events and listeners",
+            "command": "docker compose run --rm laravel.test php artisan event:list"
+        },
+        "artisan ide-helper:eloquent": {
+            "description": "Add \\Eloquent helper to \\Eloquent\\Model",
+            "command": "docker compose run --rm laravel.test php artisan ide-helper:eloquent"
+        },
+        "artisan ide-helper:generate": {
+            "description": "Generate a new IDE Helper file.",
+            "command": "docker compose run --rm laravel.test php artisan ide-helper:generate"
+        },
+        "artisan ide-helper:meta": {
+            "description": "Generate metadata for PhpStorm",
+            "command": "docker compose run --rm laravel.test php artisan ide-helper:meta"
+        },
+        "artisan ide-helper:models": {
+            "description": "Generate autocompletion for models",
+            "command": "docker compose run --rm laravel.test php artisan ide-helper:models"
+        },
+        "artisan install:api": {
+            "description": "Create an API routes file and install Laravel Sanctum or Laravel Passport",
+            "command": "docker compose run --rm laravel.test php artisan install:api"
+        },
+        "artisan install:broadcasting": {
+            "description": "Create a broadcasting channel routes file",
+            "command": "docker compose run --rm laravel.test php artisan install:broadcasting"
+        },
+        "artisan jwt:secret": {
+            "description": "Set the JWTAuth secret key used to sign the tokens",
+            "command": "docker compose run --rm laravel.test php artisan jwt:secret"
+        },
+        "artisan key:generate": {
+            "description": "Set the application key",
+            "command": "docker compose run --rm laravel.test php artisan key:generate"
+        },
+        "artisan lang:publish": {
+            "description": "Publish all language files that are available for customization",
+            "command": "docker compose run --rm laravel.test php artisan lang:publish"
+        },
+        "artisan make:cache-table": {
+            "description": "Create a migration for the cache database table",
+            "command": "docker compose run --rm laravel.test php artisan make:cache-table"
+        },
+        "artisan make:cast": {
+            "description": "Create a new custom Eloquent cast class",
+            "command": "docker compose run --rm laravel.test php artisan make:cast"
+        },
+        "artisan make:channel": {
+            "description": "Create a new channel class",
+            "command": "docker compose run --rm laravel.test php artisan make:channel"
+        },
+        "artisan make:class": {
+            "description": "Create a new class",
+            "command": "docker compose run --rm laravel.test php artisan make:class"
+        },
+        "artisan make:command": {
+            "description": "Create a new Artisan command",
+            "command": "docker compose run --rm laravel.test php artisan make:command"
+        },
+        "artisan make:component": {
+            "description": "Create a new view component class",
+            "command": "docker compose run --rm laravel.test php artisan make:component"
+        },
+        "artisan make:controller": {
+            "description": "Create a new controller class",
+            "command": "docker compose run --rm laravel.test php artisan make:controller"
+        },
+        "artisan make:enum": {
+            "description": "Create a new enum",
+            "command": "docker compose run --rm laravel.test php artisan make:enum"
+        },
+        "artisan make:event": {
+            "description": "Create a new event class",
+            "command": "docker compose run --rm laravel.test php artisan make:event"
+        },
+        "artisan make:exception": {
+            "description": "Create a new custom exception class",
+            "command": "docker compose run --rm laravel.test php artisan make:exception"
+        },
+        "artisan make:factory": {
+            "description": "Create a new model factory",
+            "command": "docker compose run --rm laravel.test php artisan make:factory"
+        },
+        "artisan make:interface": {
+            "description": "Create a new interface",
+            "command": "docker compose run --rm laravel.test php artisan make:interface"
+        },
+        "artisan make:job": {
+            "description": "Create a new job class",
+            "command": "docker compose run --rm laravel.test php artisan make:job"
+        },
+        "artisan make:job-middleware": {
+            "description": "Create a new job middleware class",
+            "command": "docker compose run --rm laravel.test php artisan make:job-middleware"
+        },
+        "artisan make:listener": {
+            "description": "Create a new event listener class",
+            "command": "docker compose run --rm laravel.test php artisan make:listener"
+        },
+        "artisan make:mail": {
+            "description": "Create a new email class",
+            "command": "docker compose run --rm laravel.test php artisan make:mail"
+        },
+        "artisan make:middleware": {
+            "description": "Create a new HTTP middleware class",
+            "command": "docker compose run --rm laravel.test php artisan make:middleware"
+        },
+        "artisan make:migration": {
+            "description": "Create a new migration file",
+            "command": "docker compose run --rm laravel.test php artisan make:migration"
+        },
+        "artisan make:model": {
+            "description": "Create a new Eloquent model class",
+            "command": "docker compose run --rm laravel.test php artisan make:model"
+        },
+        "artisan make:notification": {
+            "description": "Create a new notification class",
+            "command": "docker compose run --rm laravel.test php artisan make:notification"
+        },
+        "artisan make:notifications-table": {
+            "description": "Create a migration for the notifications table",
+            "command": "docker compose run --rm laravel.test php artisan make:notifications-table"
+        },
+        "artisan make:observer": {
+            "description": "Create a new observer class",
+            "command": "docker compose run --rm laravel.test php artisan make:observer"
+        },
+        "artisan make:policy": {
+            "description": "Create a new policy class",
+            "command": "docker compose run --rm laravel.test php artisan make:policy"
+        },
+        "artisan make:provider": {
+            "description": "Create a new service provider class",
+            "command": "docker compose run --rm laravel.test php artisan make:provider"
+        },
+        "artisan make:queue-batches-table": {
+            "description": "Create a migration for the batches database table",
+            "command": "docker compose run --rm laravel.test php artisan make:queue-batches-table"
+        },
+        "artisan make:queue-failed-table": {
+            "description": "Create a migration for the failed queue jobs database table",
+            "command": "docker compose run --rm laravel.test php artisan make:queue-failed-table"
+        },
+        "artisan make:queue-table": {
+            "description": "Create a migration for the queue jobs database table",
+            "command": "docker compose run --rm laravel.test php artisan make:queue-table"
+        },
+        "artisan make:request": {
+            "description": "Create a new form request class",
+            "command": "docker compose run --rm laravel.test php artisan make:request"
+        },
+        "artisan make:resource": {
+            "description": "Create a new resource",
+            "command": "docker compose run --rm laravel.test php artisan make:resource"
+        },
+        "artisan make:rule": {
+            "description": "Create a new validation rule",
+            "command": "docker compose run --rm laravel.test php artisan make:rule"
+        },
+        "artisan make:scope": {
+            "description": "Create a new scope class",
+            "command": "docker compose run --rm laravel.test php artisan make:scope"
+        },
+        "artisan make:seeder": {
+            "description": "Create a new seeder class",
+            "command": "docker compose run --rm laravel.test php artisan make:seeder"
+        },
+        "artisan make:session-table": {
+            "description": "Create a migration for the session database table",
+            "command": "docker compose run --rm laravel.test php artisan make:session-table"
+        },
+        "artisan make:test": {
+            "description": "Create a new test class",
+            "command": "docker compose run --rm laravel.test php artisan make:test"
+        },
+        "artisan make:trait": {
+            "description": "Create a new trait",
+            "command": "docker compose run --rm laravel.test php artisan make:trait"
+        },
+        "artisan make:view": {
+            "description": "Create a new view",
+            "command": "docker compose run --rm laravel.test php artisan make:view"
+        },
+        "artisan migrate:fresh": {
+            "description": "Drop all tables and re-run all migrations",
+            "command": "docker compose run --rm laravel.test php artisan migrate:fresh"
+        },
+        "artisan migrate:install": {
+            "description": "Create the migration repository",
+            "command": "docker compose run --rm laravel.test php artisan migrate:install"
+        },
+        "artisan migrate:refresh": {
+            "description": "Reset and re-run all migrations",
+            "command": "docker compose run --rm laravel.test php artisan migrate:refresh"
+        },
+        "artisan migrate:reset": {
+            "description": "Rollback all database migrations",
+            "command": "docker compose run --rm laravel.test php artisan migrate:reset"
+        },
+        "artisan migrate:rollback": {
+            "description": "Rollback the last database migration",
+            "command": "docker compose run --rm laravel.test php artisan migrate:rollback"
+        },
+        "artisan migrate:status": {
+            "description": "Show the status of each migration",
+            "command": "docker compose run --rm laravel.test php artisan migrate:status"
+        },
+        "artisan model:prune": {
+            "description": "Prune models that are no longer needed",
+            "command": "docker compose run --rm laravel.test php artisan model:prune"
+        },
+        "artisan model:show": {
+            "description": "Show information about an Eloquent model",
+            "command": "docker compose run --rm laravel.test php artisan model:show"
+        },
+        "artisan optimize:clear": {
+            "description": "Remove the cached bootstrap files",
+            "command": "docker compose run --rm laravel.test php artisan optimize:clear"
+        },
+        "artisan package:discover": {
+            "description": "Rebuild the cached package manifest",
+            "command": "docker compose run --rm laravel.test php artisan package:discover"
+        },
+        "artisan queue:clear": {
+            "description": "Delete all of the jobs from the specified queue",
+            "command": "docker compose run --rm laravel.test php artisan queue:clear"
+        },
+        "artisan queue:failed": {
+            "description": "List all of the failed queue jobs",
+            "command": "docker compose run --rm laravel.test php artisan queue:failed"
+        },
+        "artisan queue:flush": {
+            "description": "Flush all of the failed queue jobs",
+            "command": "docker compose run --rm laravel.test php artisan queue:flush"
+        },
+        "artisan queue:forget": {
+            "description": "Delete a failed queue job",
+            "command": "docker compose run --rm laravel.test php artisan queue:forget"
+        },
+        "artisan queue:listen": {
+            "description": "Listen to a given queue",
+            "command": "docker compose run --rm laravel.test php artisan queue:listen"
+        },
+        "artisan queue:monitor": {
+            "description": "Monitor the size of the specified queues",
+            "command": "docker compose run --rm laravel.test php artisan queue:monitor"
+        },
+        "artisan queue:prune-batches": {
+            "description": "Prune stale entries from the batches database",
+            "command": "docker compose run --rm laravel.test php artisan queue:prune-batches"
+        },
+        "artisan queue:prune-failed": {
+            "description": "Prune stale entries from the failed jobs table",
+            "command": "docker compose run --rm laravel.test php artisan queue:prune-failed"
+        },
+        "artisan queue:restart": {
+            "description": "Restart queue worker daemons after their current job",
+            "command": "docker compose run --rm laravel.test php artisan queue:restart"
+        },
+        "artisan queue:retry": {
+            "description": "Retry a failed queue job",
+            "command": "docker compose run --rm laravel.test php artisan queue:retry"
+        },
+        "artisan queue:retry-batch": {
+            "description": "Retry the failed jobs for a batch",
+            "command": "docker compose run --rm laravel.test php artisan queue:retry-batch"
+        },
+        "artisan queue:work": {
+            "description": "Start processing jobs on the queue as a daemon",
+            "command": "docker compose run --rm laravel.test php artisan queue:work"
+        },
+        "artisan route:cache": {
+            "description": "Create a route cache file for faster route registration",
+            "command": "docker compose run --rm laravel.test php artisan route:cache"
+        },
+        "artisan route:clear": {
+            "description": "Remove the route cache file",
+            "command": "docker compose run --rm laravel.test php artisan route:clear"
+        },
+        "artisan route:list": {
+            "description": "List all registered routes",
+            "command": "docker compose run --rm laravel.test php artisan route:list"
+        },
+        "artisan sail:add": {
+            "description": "Add a service to an existing Sail installation",
+            "command": "docker compose run --rm laravel.test php artisan sail:add"
+        },
+        "artisan sail:install": {
+            "description": "Install Laravel Sail's default Docker Compose file",
+            "command": "docker compose run --rm laravel.test php artisan sail:install"
+        },
+        "artisan sail:publish": {
+            "description": "Publish the Laravel Sail Docker files",
+            "command": "docker compose run --rm laravel.test php artisan sail:publish"
+        },
+        "artisan schedule:clear-cache": {
+            "description": "Delete the cached mutex files created by scheduler",
+            "command": "docker compose run --rm laravel.test php artisan schedule:clear-cache"
+        },
+        "artisan schedule:interrupt": {
+            "description": "Interrupt the current schedule run",
+            "command": "docker compose run --rm laravel.test php artisan schedule:interrupt"
+        },
+        "artisan schedule:list": {
+            "description": "List all scheduled tasks",
+            "command": "docker compose run --rm laravel.test php artisan schedule:list"
+        },
+        "artisan schedule:run": {
+            "description": "Run the scheduled commands",
+            "command": "docker compose run --rm laravel.test php artisan schedule:run"
+        },
+        "artisan schedule:test": {
+            "description": "Run a scheduled command",
+            "command": "docker compose run --rm laravel.test php artisan schedule:test"
+        },
+        "artisan schedule:work": {
+            "description": "Start the schedule worker",
+            "command": "docker compose run --rm laravel.test php artisan schedule:work"
+        },
+        "artisan schema:dump": {
+            "description": "Dump the given database schema",
+            "command": "docker compose run --rm laravel.test php artisan schema:dump"
+        },
+        "artisan storage:link": {
+            "description": "Create the symbolic links configured for the application",
+            "command": "docker compose run --rm laravel.test php artisan storage:link"
+        },
+        "artisan storage:unlink": {
+            "description": "Delete existing symbolic links configured for the application",
+            "command": "docker compose run --rm laravel.test php artisan storage:unlink"
+        },
+        "artisan stub:publish": {
+            "description": "Publish all stubs that are available for customization",
+            "command": "docker compose run --rm laravel.test php artisan stub:publish"
+        },
+        "artisan vendor:publish": {
+            "description": "Publish any publishable assets from vendor packages",
+            "command": "docker compose run --rm laravel.test php artisan vendor:publish"
+        },
+        "artisan view:cache": {
+            "description": "Compile all of the application's Blade templates",
+            "command": "docker compose run --rm laravel.test php artisan view:cache"
+        },
+        "artisan view:clear": {
+            "description": "Clear all compiled view files",
+            "command": "docker compose run --rm laravel.test php artisan view:clear"
+        }
+    }
+}
