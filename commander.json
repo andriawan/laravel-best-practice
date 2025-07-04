@@ -8,6 +8,18 @@
             "description": "stop laravel app",
             "command": "docker compose down"
         },
+        "docker compose logs": {
+            "description": "docker compose logs",
+            "command": "docker compose logs"
+        },
+        "pint format": {
+            "description": "pint format",
+            "command": "docker compose run --rm laravel.test ./vendor/bin/pint --parallel"
+        },
+        "pint check": {
+            "description": "pint format",
+            "command": "docker compose run --rm laravel.test ./vendor/bin/pint --test"
+        },
         "migrate": {
             "description": "migrate",
             "command": "docker compose run --rm laravel.test php artisan migrate"
@@ -19,6 +31,22 @@
         "test": {
             "description": "test",
             "command": "docker compose run --rm laravel.test php artisan test"
+        },
+        "git fetch": {
+            "description": "git fetch",
+            "command": "git fetch --all --prune"
+        },
+        "git ammend no edit": {
+            "description": "git ammend no edit",
+            "command": "git commit --amend --no-edit"
+        },
+        "git reset author": {
+            "description": "git ammend no edit",
+            "command": "git commit --amend --no-edit --reset-author"
+        },
+        "sync command vscode": {
+            "description": "sync command vscode",
+            "command": "cp commander.json .vscode/"
         }
     }
 }
