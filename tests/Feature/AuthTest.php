@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\TokenCreationLog;
 use App\Models\User;
 use App\Services\AuthService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -142,7 +143,7 @@ class AuthTest extends TestCase
         $profile->assertOk();
     }
 
-    public function test_should_raise_exception_invalid_nbf_or_iat()
+    public function test_should_raise_error_invalid_nbf_or_iat()
     {
         $this->travel(30)->minutes();
         $response = $this->doLoginDefault();
@@ -152,7 +153,7 @@ class AuthTest extends TestCase
         $profile->assertSee('invalid nbf or iat');
     }
 
-    public function test_should_raise_exception_signature_invalid()
+    public function test_should_raise_error_signature_invalid()
     {
         config([
             'app.jwt.algorithm' => AuthService::HS256,
@@ -171,5 +172,14 @@ class AuthTest extends TestCase
         $profile = $this->withToken($response['token'])->getJson('/api/auth/me');
         $profile->assertUnauthorized();
         $profile->assertSee('Invalid Public or Secret key');
+    }
+
+    public function test_backlist_by_user_token_should_success()
+    {
+        $response = $this->doLoginDefault();
+        $blacklist = $this->withToken($response['token'])->postJson('/api/auth/token/blacklist');
+        $blacklist->assertOk();
+        $log = new TokenCreationLog();
+        $this->assertDatabaseMissing($log->getTable(), ['sub' => 1]);
     }
 }

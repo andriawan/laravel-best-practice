@@ -40,10 +40,18 @@ class AuthController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * get user profile
      */
     public function getUserProfile(Request $request)
     {
         return $this->authService->getUserProfile($request);
+    }
+
+    /**
+     * Note to do: for admin only or high privilege
+     */
+    public function blacklistTokenForUser(Request $request)
+    {
+        return $this->authService->blacklistTokenByUserId($request);
     }
 }

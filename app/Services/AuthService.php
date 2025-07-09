@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\TokenCreationLog;
 use App\Models\User;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
@@ -46,7 +47,9 @@ class AuthService
         $token = JWT::encode($payloadAccessToken, $key, $algorithm);
         $refresh = JWT::encode($payloadRefreshToken, $key, $algorithm);
         $this->cacheToken($payloadAccessToken);
+        $this->trackToken($payloadAccessToken);
         $this->cacheToken($payloadRefreshToken);
+        $this->trackToken($payloadRefreshToken);
 
         return [
             'token' => $token,
@@ -211,6 +214,26 @@ class AuthService
     {
         $expired = Carbon::parse($config['exp']);
         Cache::put($config['jti'], $config, $expired);
+    }
+
+    private function trackToken($config)
+    {
+        $log = new TokenCreationLog($config);
+        $log->save();
+    }
+
+    private function revokeTokenCacheBySub($user_id) {
+        TokenCreationLog::query()->whereIn('sub', $user_id)->each(function ($data) {
+            Cache::delete($data->jti);
+            $data->delete();
+        }, 50);
+    }
+
+    public function blacklistTokenByUserId(Request $request) {
+        $this->revokeTokenCacheBySub([$request->sub]);
+        return response([
+            'message' => "token blacklisted successfully"
+        ]);
     }
 
     private function isTokenRevokedFromCache($config)

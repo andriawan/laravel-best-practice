@@ -8,6 +8,7 @@ Route::prefix('auth')->middleware(['api', 'token.checker', 'throttle:api'])->gro
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/token/refresh', [AuthController::class, 'refreshToken'])
         ->withoutMiddleware(['token.checker']);
+    Route::post('/token/blacklist', [AuthController::class, 'blacklistTokenForUser']);
     Route::post('/login', [AuthController::class, 'authenticate'])
         ->withoutMiddleware(['token.checker'])->middleware('auth.basic.login');
 });
