@@ -1,0 +1,20 @@
+
+version: 2
+updates:
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Allow major updates for Laravel
+    ignore:
+      - dependency-name: "laravel/framework"
+        update-types: ["version-update:semver-major"]
+    allow:
+      - dependency-name: "laravel/framework"
+    open-pull-requests-limit: 5
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
