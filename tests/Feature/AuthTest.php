@@ -179,7 +179,7 @@ class AuthTest extends TestCase
         $response = $this->doLoginDefault();
         $blacklist = $this->withToken($response['token'])->postJson('/api/auth/token/blacklist');
         $blacklist->assertOk();
-        $log = new TokenCreationLog();
+        $log = new TokenCreationLog;
         $this->assertDatabaseMissing($log->getTable(), ['sub' => 1]);
     }
 }
