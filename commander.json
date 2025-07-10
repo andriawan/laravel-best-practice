@@ -64,6 +64,9 @@
             "description": "run coverage",
             "command": "docker compose run --rm laravel.test php -dxdebug.mode=coverage ./vendor/bin/phpunit --coverage-html storage/app/public/coverage --coverage-clover=storage/app/public/coverage/coverage.xml"
         },
+        "generate open api json": {
+            "command": "docker compose run --rm laravel.test ./vendor/bin/openapi app -f json -o ./resources/swagger/openapi.json"
+        },
         "artisan about": {
             "description": "Display basic information about your application",
             "command": "docker compose run --rm laravel.test php artisan about"
