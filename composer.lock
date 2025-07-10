@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae57ae237433d2e9b93bb3a70f8979f7",
+    "content-hash": "943e6634fd354be3fcba13a40010a4a1",
     "packages": [
         {
             "name": "brick/math",
@@ -5633,6 +5633,78 @@
             "time": "2025-06-27T19:55:54+00:00"
         },
         {
+            "name": "symfony/yaml",
+            "version": "v7.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "0c3555045a46ab3cd4cc5a69d161225195230edb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/0c3555045a46ab3cd4cc5a69d161225195230edb",
+                "reference": "0c3555045a46ab3cd4cc5a69d161225195230edb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "symfony/deprecation-contracts": "^2.5|^3.0",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "conflict": {
+                "symfony/console": "<6.4"
+            },
+            "require-dev": {
+                "symfony/console": "^6.4|^7.0"
+            },
+            "bin": [
+                "Resources/bin/yaml-lint"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Yaml\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Loads and dumps YAML files",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/yaml/tree/v7.3.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2025-06-03T06:57:57+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "v2.3.0",
             "source": {
@@ -5902,6 +5974,161 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "wotz/laravel-swagger-ui",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/wotzebra/laravel-swagger-ui.git",
+                "reference": "f63430e96179c919c521ebb76fc4dddcc8b3dfae"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/wotzebra/laravel-swagger-ui/zipball/f63430e96179c919c521ebb76fc4dddcc8b3dfae",
+                "reference": "f63430e96179c919c521ebb76fc4dddcc8b3dfae",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^9.0|^10.0|^11.0|^12.0",
+                "php": "^8.1|^8.2|^8.3|^8.4"
+            },
+            "require-dev": {
+                "adamwojs/php-cs-fixer-phpdoc-force-fqcn": "^2.0",
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "guzzlehttp/guzzle": "^7.5",
+                "jasonmccreary/laravel-test-assertions": "^2.3",
+                "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0",
+                "phpunit/phpunit": "^9.5|^10.0|^11.5.3",
+                "squizlabs/php_codesniffer": "^3.6"
+            },
+            "suggest": {
+                "ext-yaml": "*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Wotz\\SwaggerUi\\SwaggerUiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Wotz\\SwaggerUi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Günther Debrauwer",
+                    "email": "gunther.debrauwer@whoownsthezebra.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Add Swagger UI to a Laravel application.",
+            "homepage": "https://github.com/wotzebra/laravel-swagger-ui",
+            "keywords": [
+                "laravel",
+                "openapi",
+                "swagger",
+                "swagger-ui"
+            ],
+            "support": {
+                "issues": "https://github.com/wotzebra/laravel-swagger-ui/issues",
+                "source": "https://github.com/wotzebra/laravel-swagger-ui/tree/1.2.0"
+            },
+            "time": "2025-03-05T09:26:18+00:00"
+        },
+        {
+            "name": "zircote/swagger-php",
+            "version": "5.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zircote/swagger-php.git",
+                "reference": "b8ba6bd99805c0ae09a38d1b26c1c92820509bd0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/zircote/swagger-php/zipball/b8ba6bd99805c0ae09a38d1b26c1c92820509bd0",
+                "reference": "b8ba6bd99805c0ae09a38d1b26c1c92820509bd0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "nikic/php-parser": "^4.19 || ^5.0",
+                "php": ">=7.4",
+                "psr/log": "^1.1 || ^2.0 || ^3.0",
+                "symfony/deprecation-contracts": "^2 || ^3",
+                "symfony/finder": "^5.0 || ^6.0 || ^7.0",
+                "symfony/yaml": "^5.0 || ^6.0 || ^7.0"
+            },
+            "conflict": {
+                "symfony/process": ">=6, <6.4.14"
+            },
+            "require-dev": {
+                "composer/package-versions-deprecated": "^1.11",
+                "doctrine/annotations": "^2.0",
+                "friendsofphp/php-cs-fixer": "^3.62.0",
+                "phpstan/phpstan": "^1.6 || ^2.0",
+                "phpunit/phpunit": "^9.0",
+                "rector/rector": "^1.0 || ^2.0",
+                "vimeo/psalm": "^4.30 || ^5.0"
+            },
+            "suggest": {
+                "doctrine/annotations": "^2.0"
+            },
+            "bin": [
+                "bin/openapi"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OpenApi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Allen",
+                    "email": "zircote@gmail.com"
+                },
+                {
+                    "name": "Bob Fanger",
+                    "email": "bfanger@gmail.com",
+                    "homepage": "https://bfanger.nl"
+                },
+                {
+                    "name": "Martin Rademacher",
+                    "email": "mano@radebatz.net",
+                    "homepage": "https://radebatz.net"
+                }
+            ],
+            "description": "Generate interactive documentation for your RESTful API using PHP attributes (preferred) or PHPDoc annotations",
+            "homepage": "https://github.com/zircote/swagger-php",
+            "keywords": [
+                "api",
+                "json",
+                "rest",
+                "service discovery"
+            ],
+            "support": {
+                "issues": "https://github.com/zircote/swagger-php/issues",
+                "source": "https://github.com/zircote/swagger-php/tree/5.1.3"
+            },
+            "time": "2025-05-20T03:35:10+00:00"
         }
     ],
     "packages-dev": [
@@ -8608,78 +8835,6 @@
             "time": "2024-10-20T05:08:20+00:00"
         },
         {
-            "name": "symfony/yaml",
-            "version": "v7.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "0c3555045a46ab3cd4cc5a69d161225195230edb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/0c3555045a46ab3cd4cc5a69d161225195230edb",
-                "reference": "0c3555045a46ab3cd4cc5a69d161225195230edb",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2",
-                "symfony/deprecation-contracts": "^2.5|^3.0",
-                "symfony/polyfill-ctype": "^1.8"
-            },
-            "conflict": {
-                "symfony/console": "<6.4"
-            },
-            "require-dev": {
-                "symfony/console": "^6.4|^7.0"
-            },
-            "bin": [
-                "Resources/bin/yaml-lint"
-            ],
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Loads and dumps YAML files",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/yaml/tree/v7.3.1"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2025-06-03T06:57:57+00:00"
-        },
-        {
             "name": "theseer/tokenizer",
             "version": "1.2.3",
             "source": {
@@ -8792,12 +8947,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }
