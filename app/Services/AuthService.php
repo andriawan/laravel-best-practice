@@ -222,17 +222,20 @@ class AuthService
         $log->save();
     }
 
-    private function revokeTokenCacheBySub($user_id) {
+    private function revokeTokenCacheBySub($user_id)
+    {
         TokenCreationLog::query()->whereIn('sub', $user_id)->each(function ($data) {
             Cache::delete($data->jti);
             $data->delete();
         }, 50);
     }
 
-    public function blacklistTokenByUserId(Request $request) {
+    public function blacklistTokenByUserId(Request $request)
+    {
         $this->revokeTokenCacheBySub([$request->sub]);
+
         return response([
-            'message' => "token blacklisted successfully"
+            'message' => 'token blacklisted successfully',
         ]);
     }
 

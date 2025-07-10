@@ -1,0 +1,67 @@
+name: CI/CD Test, Formatting and Collect Coverage
+
+on:
+  pull_request:
+    branches: [main]
+
+env:
+  CERTS_PATH: './storage/app/private'
+  TESTING_ENV: ${{ vars.TESTING_ENV }}
+
+jobs:
+  run:
+    name: Run Tests, Formatting and Collect Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Generate Private and Public Keys
+        run: |
+          mkdir -p ${CERTS_PATH}
+          openssl genpkey -algorithm RSA -out ${CERTS_PATH}/private.key -pkeyopt rsa_keygen_bits:2048
+          openssl rsa -pubout -in ${CERTS_PATH}/private.key -out ${CERTS_PATH}/public.key
+          chmod 600 ${CERTS_PATH}/private.key ${CERTS_PATH}/public.key
+          tree ${CERTS_PATH}
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: xdebug
+
+      - name: Cache Composer dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ hashFiles('composer.lock') }}
+          restore-keys: |
+            composer-
+
+      - name: Install dependencies
+        run: |
+          composer install --prefer-dist --no-progress --no-interaction
+
+      - name: generate env
+        run: |
+          echo "$TESTING_ENV" > .env
+
+      - name: Check Formatting with Pint
+        run: composer check-format
+
+      - name: Generate app key
+        run: php artisan key:generate
+
+      - name: Run migrations
+        run: php artisan migrate --force
+
+      - name: Run tests
+        run: php artisan test --parallel --coverage --coverage-clover=coverage.xml
+        
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
+          name: best-practice-laravel
+          fail_ci_if_error: true

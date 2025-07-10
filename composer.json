@@ -17,6 +17,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.5",
+        "brianium/paratest": "^7.0",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.2.2",
         "laravel/pint": "^1.13",
@@ -61,6 +62,9 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
+        ],
+        "check-format": [
+            "./vendor/bin/pint --test"
         ]
     },
     "extra": {
