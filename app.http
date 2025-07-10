@@ -1,0 +1,30 @@
+@base_url = http://localhost:8010
+@api = {{base_url}}/api
+@username = test@example.com
+@passowrd = password
+@token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMTAvYXBpL2F1dGgvbG9naW4iLCJpYXQiOjE3NTE3Nzc4ODMsImV4cCI6MTc1MTc4MTQ4MywibmJmIjoxNzUxNzc3ODgzLCJqdGkiOiJ2RE5ZRzRHTmRMdjIzcmpMIiwic3ViIjoiMSIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.VLOLuhQCgVY4Qsgexr0YR9RqqvnbnED1taftKi_wNVc
+@refresh = eyJhbGciOiJSUzI1NiJ9.eyJpc3MiOiJhcHBzIiwic3ViIjoiYWxpY2Uuam9obnNvbkBleGFtcGxlLmNvbSIsImV4cCI6MTc0OTM4NzY5OCwidXNlcl9pZCI6MSwiaWF0IjoxNzQ5Mzg3NTc4LCJzY29wZSI6IiJ9.iqcexuIGb8m-Z6mUKzRHsksl3GTQoc6wamQGlJhDB-hAiU7YrgJmKdLA4aD3XNbRTi6aiaGS0R5N5GCBh-_O81sFywa_stNgJUEA-o-SnTeBdaJsD1ITPPzu9xivyDR6vhz6LrW1mukwm4mCcR15R-5w0gIU1nl5XhBX3Rggfjr-lnrqEItkWglKtY1haJ_Aemc9EmoCxwSsLZ_OEbKdkzyCxcYcJ_5IvHeU98Z_DzhmnxyFBQXUFYTbENA162P3YL99dGLWSNBQ30akUYacjYT3aF4zif1qAH8M42tgb-OKt9DXlKWsyojyAvH2qQWT8eu5o4uxs1L8Gw5PuQk-JA
+GET {{api}}/users
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+GET {{api}}/auth/me
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+
+POST {{api}}/auth/login
+Accept: application/json
+Authorization: Basic {{username}}:{{passowrd}}
+
+###
+
+POST {{api}}/auth/token/refresh
+Accept: application/json
+Content-Type: application/json
+
+{
+    "token": "{{refresh}}"
+}

@@ -123,4 +123,18 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'jwt' => [
+        'expired' => [
+            'access_token' => (int) env('JWT_EXPIRED_AT', 5), // in minutes
+            'refresh_token' => (int) env('JWT_REFRESH_EXPIRED_AT', 24 * 60), // in minutes
+        ],
+        'algorithm' => env('JWT_ALGORITHM', 'RS256'),
+        'secret' => env('JWT_SECRET', 'secret'),
+        'key' => [
+            'private' => env('JWT_PRIVATE_KEY', storage_path('app/private/private.key')),
+            'public' => env('JWT_PUBLIC_KEY', storage_path('app/private/public.key')),
+        ],
+    ],
+    'rate_limite' => (int) env('RATE_LIMIT_PER_MINUTE', 60),
+
 ];

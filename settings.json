@@ -1,0 +1,8 @@
+{
+  "phpunit.command": "docker compose exec -u sail laravel.test ${php} ${phpargs} ${phpunit} ${phpunitargs}",
+  "phpunit.phpunit": "artisan test",
+  "phpunit.paths": {
+    "${workspaceFolder}": "/var/www/html",
+  },
+  "phpunit.debuggerConfig": "Listen for Xdebug"
+}
