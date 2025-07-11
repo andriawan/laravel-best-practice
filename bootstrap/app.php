@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AuthBasicForLoginChecker;
+use App\Http\Middleware\GlobalJsonResponse;
 use App\Http\Middleware\JwtTokenChecker;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -15,6 +16,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
+            'force.json.response' => GlobalJsonResponse::class,
             'auth.basic.login' => AuthBasicForLoginChecker::class,
             'token.checker' => JwtTokenChecker::class,
         ]);
