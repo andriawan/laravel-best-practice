@@ -135,6 +135,6 @@ return [
             'public' => env('JWT_PUBLIC_KEY', storage_path('app/private/public.key')),
         ],
     ],
-    'rate_limite' => (int) env('RATE_LIMIT_PER_MINUTE', 60),
+    'rate_limit' => (int) env('RATE_LIMIT_PER_MINUTE', 60),
 
 ];
