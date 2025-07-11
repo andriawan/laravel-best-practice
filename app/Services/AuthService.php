@@ -59,7 +59,7 @@ class AuthService
 
     public function decodeTokenFromRequest(Request $request)
     {
-        $jwt = $request->bearerToken();
+        $jwt = $request->bearerToken() ?? "";
         $decoded = $this->decodeToken($jwt);
         $request->merge($decoded);
 
@@ -100,7 +100,7 @@ class AuthService
 
             return response($token);
         } catch (UnexpectedValueException $e) {
-            return response()->json(['message' => $e->getMessage()], Response::HTTP_UNAUTHORIZED);
+            return response()->json(['message' => 'Token invalid'], Response::HTTP_UNAUTHORIZED);
         }
 
     }
