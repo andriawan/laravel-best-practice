@@ -13,7 +13,7 @@ return [
             /*
              * The title of the page where the swagger file is served.
              */
-            'title' => env('APP_NAME') . ' - Swagger',
+            'title' => env('APP_NAME').' - Swagger',
 
             /*
              * The versions of the swagger file. The key is the version name and the value is the path to the file.
@@ -30,10 +30,7 @@ return [
             /*
              * The middleware that is applied to the route.
              */
-            'middleware' => [
-                'web',
-                EnsureUserIsAuthorized::class,
-            ],
+            'middleware' => [],
 
             /*
              * Specify the validator URL. Set to false to disable validation.
