@@ -25,15 +25,15 @@ class JwtTokenChecker
             $authService = app(AuthService::class);
             $authService->decodeTokenFromRequest($request);
         } catch (InvalidArgumentException $e) {
-            return response()->json(['message' => 'Invalid Public or Secret key'], Response::HTTP_UNAUTHORIZED);
+            abort(Response::HTTP_UNAUTHORIZED, 'Invalid Public or Secret key');
         } catch (SignatureInvalidException $e) {
-            return response()->json(['message' => 'provided JWT signature verification failed'], Response::HTTP_UNAUTHORIZED);
+            abort(Response::HTTP_UNAUTHORIZED, 'provided JWT signature verification failed');
         } catch (BeforeValidException $e) {
-            return response()->json(['message' => 'invalid nbf or iat'], Response::HTTP_UNAUTHORIZED);
+            abort(Response::HTTP_UNAUTHORIZED, 'invalid nbf or iat');
         } catch (ExpiredException $e) {
-            return response()->json(['message' => 'Token expired'], Response::HTTP_UNAUTHORIZED);
+            abort(Response::HTTP_UNAUTHORIZED, 'Token expired');
         } catch (UnexpectedValueException $e) {
-            return response()->json(['message' => 'Token invalid'], Response::HTTP_UNAUTHORIZED);
+            abort(Response::HTTP_UNAUTHORIZED, 'Token invalid');
         }
 
         return $next($request);

@@ -59,7 +59,7 @@ class AuthService
 
     public function decodeTokenFromRequest(Request $request)
     {
-        $jwt = $request->bearerToken() ?? "";
+        $jwt = $request->bearerToken() ?? '';
         $decoded = $this->decodeToken($jwt);
         $request->merge($decoded);
 
