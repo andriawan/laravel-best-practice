@@ -59,7 +59,9 @@ class AuthService
 
     public function decodeTokenFromRequest(Request $request)
     {
-        $jwt = $request->bearerToken() ?? '';
+        abort_unless($request->bearerToken() !== null, 
+            Response::HTTP_UNAUTHORIZED, 'Please provide token bearer');
+        $jwt = $request->bearerToken();
         $decoded = $this->decodeToken($jwt);
         $request->merge($decoded);
 
