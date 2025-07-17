@@ -8,6 +8,7 @@ on:
       - next
       - beta
       - "*.x"
+      - 13-implement-swagger
 
 permissions:
   contents: read
@@ -35,7 +36,13 @@ jobs:
           restore-keys: |
             composer-
       - name: Install dependencies
-        run: npm ci
+        run: |
+          composer install --prefer-dist --no-progress --no-suggest
+          npm ci
       - run: npx semantic-release@21.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sync OpenAPI swagger version
+        run: |
+          php artisan swagger-ui:install
+          node scripts/sync-openapi-version.js

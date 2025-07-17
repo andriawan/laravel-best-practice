@@ -1,5 +1,5 @@
 {
-  "branches": ["main"],
+  "branches": ["main", "13-implement-swagger"],
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
@@ -8,13 +8,13 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "echo ${nextRelease.version} > VERSION && composer config version ${nextRelease.version} --no-plugins"
+        "prepareCmd": "echo ${nextRelease} > version.json && composer config version ${nextRelease.version} --no-plugins"
       }
     ],
     [
       "@semantic-release/git",
       {
-        "assets": ["CHANGELOG.md", "VERSION", "composer.json"],
+        "assets": ["CHANGELOG.md", "version.json", "composer.json"],
         "message": "chore(release): ${nextRelease.version} [skip ci]"
       }
     ]
