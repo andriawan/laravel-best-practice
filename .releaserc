@@ -8,7 +8,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "echo ${nextRelease} > version.json && composer config version ${nextRelease.version} --no-plugins"
+        "prepareCmd": "echo \"${JSON.stringify(nextRelease, null, 2)}\" > version.json && composer config version ${nextRelease.version} --no-plugins"
       }
     ],
     [
