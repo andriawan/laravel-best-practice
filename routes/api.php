@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('auth')->middleware(['api', 'token.checker', 'throttle:api'])->group(function () {
+Route::prefix('auth')->middleware(['force.json.response', 'api', 'token.checker', 'throttle:api'])->group(function () {
     Route::get('/me', [AuthController::class, 'getUserProfile']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/token/refresh', [AuthController::class, 'refreshToken'])

@@ -5,9 +5,6 @@ on:
   push:
     branches:
       - main
-      - next
-      - beta
-      - "*.x"
 
 permissions:
   contents: read
@@ -35,7 +32,14 @@ jobs:
           restore-keys: |
             composer-
       - name: Install dependencies
-        run: npm ci
+        run: |
+          composer install --prefer-dist --no-progress --no-suggest
+          npm ci
       - run: npx semantic-release@21.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Sync OpenAPI swagger version
+        run: |
+          ./vendor/bin/openapi app -f json -o ./resources/swagger/openapi.json
+          tree resources/swagger
+          node scripts/sync-openapi-version.js
