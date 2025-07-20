@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/andriawan/laravel-best-practice/compare/v1.0.0...v1.1.0) (2025-07-20)
+
+
+### Features
+
+* **swagger:** add swagger with base config ([ec0e752](https://github.com/andriawan/laravel-best-practice/commit/ec0e752b02a1a98faaa8500b97af61cfebfb2c86))
+
 # 1.0.0 (2025-07-16)
 
 
