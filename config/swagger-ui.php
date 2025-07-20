@@ -1,7 +1,5 @@
 <?php
 
-use Wotz\SwaggerUi\Http\Middleware\EnsureUserIsAuthorized;
-
 return [
     'files' => [
         [
