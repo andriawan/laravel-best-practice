@@ -44,7 +44,7 @@ openssl rsa -in private.key -pubout -out public.key
 
 ### ✅ JWT Authentication using Firebase JWT PHP
 
-Implements stateless authentication with JSON Web Tokens for robust and secure REST API access control. By fully leveraging Spring Security and the OAuth2 Resource Server capabilities, this approach minimizes complexity and avoids reinventing boilerplate code—ensuring a clean, maintainable, and production-ready security setup.
+Implements stateless authentication with JSON Web Tokens for robust and secure REST API access control using Firebase JWT PHP. This approach minimizes complexity and avoids reinventing boilerplate code—ensuring a clean, maintainable, and production-ready security setup.
 
 ### ✅ Token issuance follows RFC 7617 using HTTP Basic Authentication
 
@@ -97,5 +97,5 @@ By default rate limiting always implemented via middleware with default 60 reque
 
 Regularly updates project dependencies to ensure security, performance, and compatibility with the latest versions.
 
-Perfect as a starter template for any Java backend project!
+Perfect as a starter template for any Laravel backend project!
 Check it out and feel free to ⭐ or fork!
