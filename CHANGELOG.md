@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/andriawan/laravel-best-practice/compare/v1.1.0...v1.2.0) (2025-07-21)
+
+
+### Features
+
+* **docker:** implement docker for production deployment ([510daa8](https://github.com/andriawan/laravel-best-practice/commit/510daa8b58f4dae9338ec8bfe64783bd212203b7))
+* **octane:** implement octane ([80f79c9](https://github.com/andriawan/laravel-best-practice/commit/80f79c90b698a5dfce9c80c69d37112ba3dd24a4))
+
 # [1.1.0](https://github.com/andriawan/laravel-best-practice/compare/v1.0.0...v1.1.0) (2025-07-20)
 
 
