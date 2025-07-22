@@ -1,3 +1,11 @@
+## [1.2.1](https://github.com/andriawan/laravel-best-practice/compare/v1.2.0...v1.2.1) (2025-07-22)
+
+
+### Bug Fixes
+
+* flow for trigger docker build and release ([225b38a](https://github.com/andriawan/laravel-best-practice/commit/225b38af1e3e4514c78079f0649e5ce3a59b9d17))
+* typo in readme ([bb01d2a](https://github.com/andriawan/laravel-best-practice/commit/bb01d2a2e5ce0363472f649ae3f140acba9bbde4))
+
 # [1.2.0](https://github.com/andriawan/laravel-best-practice/compare/v1.1.0...v1.2.0) (2025-07-21)
 
 
