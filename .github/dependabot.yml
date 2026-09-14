@@ -5,6 +5,10 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      patch-and-minor:
+        update-types: ["version-update:semver-patch", "version-update:semver-minor"]
+        patterns: ["*"]
     # Allow major updates for Laravel
     ignore:
       - dependency-name: "laravel/framework"
@@ -17,4 +21,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      patch-and-minor:
+        update-types: ["version-update:semver-patch", "version-update:semver-minor"]
+        patterns: ["*"]
     open-pull-requests-limit: 5
