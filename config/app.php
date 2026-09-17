@@ -131,6 +131,7 @@ return [
         'algorithm' => env('JWT_ALGORITHM', 'RS256'),
         'secret' => env('JWT_SECRET', 'secret'),
         'key' => [
+            // Accepts a key file path, a raw PEM string, or a base64 encoded PEM string.
             'private' => env('JWT_PRIVATE_KEY', storage_path('app/private/private.key')),
             'public' => env('JWT_PUBLIC_KEY', storage_path('app/private/public.key')),
         ],

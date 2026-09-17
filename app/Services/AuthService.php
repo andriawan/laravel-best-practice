@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\JwtKeyException;
 use App\Models\TokenCreationLog;
 use App\Models\User;
 use Firebase\JWT\JWT;
@@ -28,6 +29,8 @@ class AuthService
     const ACCESS_TOKEN_TYPE = 'access_token';
 
     const REFRESH_TOKEN_TYPE = 'refresh_token';
+
+    const PEM_HEADER = '-----BEGIN';
 
     public function authenticate(Request $request)
     {
@@ -174,22 +177,40 @@ class AuthService
 
     private function getPrivateKey()
     {
-        $path = config('app.jwt.key.private');
-        abort_unless(File::exists($path),
-            Response::HTTP_NOT_FOUND, 'please provide private key');
-        $privateKey = File::get($path);
-
-        return $privateKey;
+        return $this->resolveKey(config('app.jwt.key.private'), 'private');
     }
 
     private function getPublicKey()
     {
-        $path = config('app.jwt.key.public');
-        abort_unless(File::exists($path),
-            Response::HTTP_NOT_FOUND, 'please provide public key');
-        $publicKey = File::get($path);
+        return $this->resolveKey(config('app.jwt.key.public'), 'public');
+    }
 
-        return $publicKey;
+    /**
+     * Resolve a key from its config value, which may be a raw PEM string,
+     * a base64 encoded PEM string, or a path to a key file.
+     *
+     * @throws JwtKeyException
+     */
+    private function resolveKey($key, $type)
+    {
+        throw_if(blank($key), JwtKeyException::missing($type));
+
+        if (str_contains($key, self::PEM_HEADER)) {
+            return $key;
+        }
+
+        $decoded = base64_decode($key, true);
+
+        if ($decoded !== false) {
+            throw_unless(str_contains($decoded, self::PEM_HEADER),
+                JwtKeyException::invalid($type));
+
+            return $decoded;
+        }
+
+        throw_unless(File::exists($key), JwtKeyException::missing($type));
+
+        return File::get($key);
     }
 
     private function getKey($type = 'private')
