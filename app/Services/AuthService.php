@@ -29,6 +29,8 @@ class AuthService
 
     const REFRESH_TOKEN_TYPE = 'refresh_token';
 
+    const PEM_HEADER = '-----BEGIN';
+
     public function authenticate(Request $request)
     {
         $user = $this->getUserForAuth($request);
@@ -174,22 +176,37 @@ class AuthService
 
     private function getPrivateKey()
     {
-        $path = config('app.jwt.key.private');
-        abort_unless(File::exists($path),
-            Response::HTTP_NOT_FOUND, 'please provide private key');
-        $privateKey = File::get($path);
-
-        return $privateKey;
+        return $this->resolveKey(config('app.jwt.key.private'), 'private');
     }
 
     private function getPublicKey()
     {
-        $path = config('app.jwt.key.public');
-        abort_unless(File::exists($path),
-            Response::HTTP_NOT_FOUND, 'please provide public key');
-        $publicKey = File::get($path);
+        return $this->resolveKey(config('app.jwt.key.public'), 'public');
+    }
 
-        return $publicKey;
+    /**
+     * Resolve a key from its config value, which may be a raw PEM string,
+     * a base64 encoded PEM string, or a path to a key file.
+     */
+    private function resolveKey($key, $type)
+    {
+        abort_unless(filled($key),
+            Response::HTTP_NOT_FOUND, "please provide {$type} key");
+
+        if (str_contains($key, self::PEM_HEADER)) {
+            return $key;
+        }
+
+        $decoded = base64_decode($key, true);
+
+        if ($decoded !== false && str_contains($decoded, self::PEM_HEADER)) {
+            return $decoded;
+        }
+
+        abort_unless(File::exists($key),
+            Response::HTTP_NOT_FOUND, "please provide {$type} key");
+
+        return File::get($key);
     }
 
     private function getKey($type = 'private')

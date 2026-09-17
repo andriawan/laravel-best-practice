@@ -23,6 +23,15 @@ JWT_PRIVATE_KEY=/var/www/html/app/private/private.key
 JWT_PUBLIC_KEY=/var/www/html/app/private/public.key
 ```
 
+Both env values also accept a **raw PEM string** or a **base64 encoded PEM string**, which is handy
+when keys are injected as secrets (e.g. Docker, Kubernetes, CI) and no file is mounted:
+
+```bash
+# JWT keys provided as base64 encoded PEM content
+JWT_PRIVATE_KEY=$(base64 -w0 private.key)
+JWT_PUBLIC_KEY=$(base64 -w0 public.key)
+```
+
 ### Required Files
 
 - 🔐 `private.key` — used to **sign** the JWT

@@ -143,6 +143,42 @@ class AuthTest extends TestCase
         $profile->assertOk();
     }
 
+    private function generateKeyPair(): array
+    {
+        $resource = openssl_pkey_new([
+            'private_key_bits' => 2048,
+            'private_key_type' => OPENSSL_KEYTYPE_RSA,
+        ]);
+        openssl_pkey_export($resource, $privateKey);
+        $publicKey = openssl_pkey_get_details($resource)['key'];
+
+        return [$privateKey, $publicKey];
+    }
+
+    public function test_should_success_authenticate_with_base64_encoded_keys()
+    {
+        [$privateKey, $publicKey] = $this->generateKeyPair();
+        config([
+            'app.jwt.key.private' => base64_encode($privateKey),
+            'app.jwt.key.public' => base64_encode($publicKey),
+        ]);
+        $response = $this->doLoginDefault();
+        $profile = $this->withToken($response['token'])->getJson('/api/auth/me');
+        $profile->assertOk();
+    }
+
+    public function test_should_success_authenticate_with_raw_pem_keys()
+    {
+        [$privateKey, $publicKey] = $this->generateKeyPair();
+        config([
+            'app.jwt.key.private' => $privateKey,
+            'app.jwt.key.public' => $publicKey,
+        ]);
+        $response = $this->doLoginDefault();
+        $profile = $this->withToken($response['token'])->getJson('/api/auth/me');
+        $profile->assertOk();
+    }
+
     public function test_should_raise_error_invalid_nbf_or_iat()
     {
         $this->travel(30)->minutes();
