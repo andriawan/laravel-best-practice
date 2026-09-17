@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\JwtKeyException;
 use App\Models\TokenCreationLog;
 use App\Models\User;
 use Firebase\JWT\JWT;
@@ -187,11 +188,12 @@ class AuthService
     /**
      * Resolve a key from its config value, which may be a raw PEM string,
      * a base64 encoded PEM string, or a path to a key file.
+     *
+     * @throws JwtKeyException
      */
     private function resolveKey($key, $type)
     {
-        abort_unless(filled($key),
-            Response::HTTP_NOT_FOUND, "please provide {$type} key");
+        throw_if(blank($key), JwtKeyException::missing($type));
 
         if (str_contains($key, self::PEM_HEADER)) {
             return $key;
@@ -199,12 +201,14 @@ class AuthService
 
         $decoded = base64_decode($key, true);
 
-        if ($decoded !== false && str_contains($decoded, self::PEM_HEADER)) {
+        if ($decoded !== false) {
+            throw_unless(str_contains($decoded, self::PEM_HEADER),
+                JwtKeyException::invalid($type));
+
             return $decoded;
         }
 
-        abort_unless(File::exists($key),
-            Response::HTTP_NOT_FOUND, "please provide {$type} key");
+        throw_unless(File::exists($key), JwtKeyException::missing($type));
 
         return File::get($key);
     }

@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Exceptions\JwtKeyException;
 use App\Models\TokenCreationLog;
 use App\Models\User;
 use App\Services\AuthService;
@@ -177,6 +178,35 @@ class AuthTest extends TestCase
         $response = $this->doLoginDefault();
         $profile = $this->withToken($response['token'])->getJson('/api/auth/me');
         $profile->assertOk();
+    }
+
+    public function test_should_throw_exception_when_private_key_missing()
+    {
+        config(['app.jwt.key.private' => null]);
+        $this->withoutExceptionHandling();
+        $this->expectException(JwtKeyException::class);
+        $this->doLoginDefault();
+    }
+
+    public function test_should_throw_exception_when_public_key_missing()
+    {
+        [$privateKey] = $this->generateKeyPair();
+        config([
+            'app.jwt.key.private' => $privateKey,
+            'app.jwt.key.public' => null,
+        ]);
+        $response = $this->doLoginDefault();
+        $this->withoutExceptionHandling();
+        $this->expectException(JwtKeyException::class);
+        $this->withToken($response['token'])->getJson('/api/auth/me');
+    }
+
+    public function test_should_throw_exception_when_key_is_invalid()
+    {
+        config(['app.jwt.key.private' => base64_encode('not a pem')]);
+        $this->withoutExceptionHandling();
+        $this->expectException(JwtKeyException::class);
+        $this->doLoginDefault();
     }
 
     public function test_should_raise_error_invalid_nbf_or_iat()

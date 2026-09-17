@@ -32,6 +32,9 @@ JWT_PRIVATE_KEY=$(base64 -w0 private.key)
 JWT_PUBLIC_KEY=$(base64 -w0 public.key)
 ```
 
+When a key is missing or cannot be resolved, an `App\Exceptions\JwtKeyException` is thrown with a
+message telling you which environment variable to set, instead of a misleading `404` response.
+
 ### Required Files
 
 - 🔐 `private.key` — used to **sign** the JWT
